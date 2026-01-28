@@ -18,7 +18,7 @@ function showLogin($error = '') {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { 
-                background: linear-gradient(135deg, #1b3d24 0%, #1b3d24 100%); 
+                background: linear-gradient(135deg, #064232 0%, #064232 100%); 
                 min-height: 100vh; 
                 display: flex; 
                 align-items: center; 
@@ -35,7 +35,7 @@ function showLogin($error = '') {
                 padding: 40px;
             }
             .login-card h1 {
-                color: #1b3d24;
+                color: #064232;
                 font-weight: bold;
                 margin-bottom: 10px;
                 text-align: center;
@@ -53,11 +53,11 @@ function showLogin($error = '') {
                 margin-bottom: 20px;
             }
             .form-control:focus {
-                border-color: #1b3d24;
-                box-shadow: 0 0 0 0.2rem rgba(64, 192, 132, 0.3);
+                border-color: #064232;
+                box-shadow: 0 0 0 0.2rem rgba(6, 66, 50, 0.25);
             }
             .btn-login {
-                background: linear-gradient(135deg, #1b3d24 0%, #1b3d24 100%);
+                background: linear-gradient(135deg, #064232 0%, #064232 100%);
                 border: none;
                 padding: 12px;
                 font-weight: bold;

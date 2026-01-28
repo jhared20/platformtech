@@ -13,21 +13,21 @@ function showDashboard() {
         <title>Student Enrollment System</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            body { background: linear-gradient(135deg, #064232 0%, #064232 100%); min-height: 100vh; display: flex; flex-direction: column; }
-            .navbar { background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+            body { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%); min-height: 100vh; display: flex; flex-direction: column; }
+            .navbar { background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
             .navbar-brand { font-weight: bold; font-size: 1.5em; color: white !important; }
             .nav-link { color: rgba(255,255,255,0.9) !important; }
             .nav-link:hover { color: white !important; }
             .hero { flex: 1; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 40px; }
-            .hero h1 { font-size: 3.5em; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(64, 192, 132, 0.3); }
+            .hero h1 { font-size: 3.5em; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3); }
             .hero p { font-size: 1.3em; margin-bottom: 40px; opacity: 0.95; }
-            .card { background: white; border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(64, 192, 132, 0.3); transition: transform 0.3s, box-shadow 0.3s; }
-            .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(64, 192, 132, 0.3); }
+            .card { background: #5D866C; border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3); transition: transform 0.3s, box-shadow 0.3s; }
+            .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
             .card-body { padding: 30px; text-align: center; }
-            .card h5 { font-size: 1.5em; margin-bottom: 15px; color: #064232; }
-            .card p { color: #666; margin-bottom: 20px; }
-            .btn-primary { background: linear-gradient(135deg, #064232 0%, #064232 100%); border: none; padding: 10px 30px; font-weight: bold; }
-            .btn-primary:hover { background: linear-gradient(135deg, #064232 0%, #064232 100%); transform: scale(1.05); }
+            .card h5 { font-size: 1.5em; margin-bottom: 15px; color: #1C352D; }
+            .card p { color: #ffffff; margin-bottom: 20px; }
+            .btn-primary { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%); border: none; padding: 10px 30px; font-weight: bold; }
+            .btn-primary:hover { background: linear-gradient(135deg, #B4DEBD 0%, #B4DEBD 100%); transform: scale(1.05); }
             .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
             .icon { font-size: 3em; margin-bottom: 15px; }
         </style>

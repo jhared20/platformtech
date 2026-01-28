@@ -15,14 +15,14 @@ function showEnrollments($pdo, $message = '', $message_type = '') {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
-            .navbar { background: linear-gradient(135deg, #064232 0%, #064232 100%) !important; }
+            .navbar { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%) !important; }
             .navbar-brand { color: white !important; font-weight: bold; }
             .nav-link { color: rgba(255,255,255,0.9) !important; }
             .nav-link:hover { color: white !important; }
             .container { margin-top: 30px; }
             .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
             .table { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-            .table thead { background: linear-gradient(135deg, #064232 0%, #064232 100%); color: white; }
+            .table thead { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%); color: white; }
         </style>
     </head>
     <body>
@@ -48,7 +48,7 @@ function showEnrollments($pdo, $message = '', $message_type = '') {
         <div class="container">
             <div class="page-header">
                 <h1>Enrollments</h1>
-                <a href="/enrollments/create" class="btn btn-success btn-lg">➕ Create Enrollment</a>
+                <a href="/enrollments/create" class="btn btn-success btn-lg">Create Enrollment</a>
             </div>
 
             <?php if ($message): ?>
@@ -80,11 +80,11 @@ function showEnrollments($pdo, $message = '', $message_type = '') {
                                 <td><?php echo htmlspecialchars($enrollment['course_name']); ?></td>
                                 <td><?php echo date('d M Y', strtotime($enrollment['enrollment_date'])); ?></td>
                                 <td>
-                                    <a href="/enrollments/<?php echo $enrollment['id']; ?>" class="btn btn-sm btn-info">👁️ View</a>
+                                    <a href="/enrollments/<?php echo $enrollment['id']; ?>" class="btn btn-sm btn-info">👁️</a>
                                     <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure?')">
                                         <input type="hidden" name="action" value="delete_enrollment">
                                         <input type="hidden" name="id" value="<?php echo $enrollment['id']; ?>">
-                                        <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">🗑️</button>
                                     </form>
                                 </td>
                             </tr>
@@ -114,15 +114,15 @@ function showCreateEnrollment($pdo, $message = '', $message_type = '') {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
-            .navbar { background: linear-gradient(135deg, #064232 0%, #064232 100%) !important; }
+            .navbar { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%) !important; }
             .navbar-brand { color: white !important; font-weight: bold; }
             .container { margin-top: 50px; }
             .form-card { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-            .form-card h2 { margin-bottom: 30px; color: #064232; }
-            .form-control:focus { border-color: #064232; box-shadow: 0 0 0 0.2rem rgba(6, 66, 50, 0.25); }
-            .btn-primary { background: linear-gradient(135deg, #1F4529 0%, #1F4529 100%); border: none; }
-            .btn-secondary { background: #ff0808; border: none; }
-            .btn-secondary:hover { background: #ff0808; }
+            .form-card h2 { margin-bottom: 30px; color: #1C352D; }
+            .form-control:focus { border-color: #1C352D; box-shadow: 0 0 0 0.2rem rgba(28, 53, 45, 0.25); }
+            .btn-primary { background: linear-gradient(135deg, #B4DEBD 0%, #B4DEBD 100%); border: none; }
+            .btn-secondary { background: #f08282; border: none; }
+            .btn-secondary:hover { background: #f08282; }
         </style>
     </head>
     <body>
@@ -168,8 +168,8 @@ function showCreateEnrollment($pdo, $message = '', $message_type = '') {
                                 <input type="date" class="form-control" name="enrollment_date" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                             <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">✅ Create Enrollment</button>
-                                <a href="/enrollments" class="btn btn-secondary btn-lg">❌ Cancel</a>
+                                <button type="submit" class="btn btn-primary btn-lg">✔️</button>
+                                <a href="/enrollments" class="btn btn-secondary btn-lg">❌</a>
                             </div>
                         </form>
                     </div>
@@ -201,7 +201,7 @@ function showEnrollmentDetail($pdo, $id) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
-            .navbar { background: linear-gradient(135deg, #064232 0%, #1b3d24 100%) !important; }
+            .navbar { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%) !important; }
             .navbar-brand { color: white !important; font-weight: bold; }
             .nav-link { color: rgba(255,255,255,0.9) !important; }
             .container { margin-top: 30px; }
@@ -221,7 +221,7 @@ function showEnrollmentDetail($pdo, $id) {
         </nav>
 
         <div class="container">
-            <a href="/enrollments" class="btn btn-secondary mb-3">← Back to Enrollments</a>
+            <a href="/enrollments" class="btn btn-secondary mb-3">←</a>
             
             <div class="detail-card">
                 <h2>Enrollment Details</h2>
@@ -237,7 +237,7 @@ function showEnrollmentDetail($pdo, $id) {
                     </div>
                 </div>
                 <hr>
-                <a href="/enrollments" class="btn btn-secondary">Back</a>
+                <!-- <a href="/enrollments" class="btn btn-secondary">Back</a> -->
             </div>
         </div>
 

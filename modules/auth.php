@@ -53,11 +53,11 @@ function showLogin($error = '') {
                 margin-bottom: 20px;
             }
             .form-control:focus {
-                border-color: #064232;
-                box-shadow: 0 0 0 0.2rem rgba(6, 66, 50, 0.25);
+                border-color: #1C352D;
+                box-shadow: 0 0 0 0.2rem rgba(28, 53, 45, 0.25);
             }
             .btn-login {
-                background: linear-gradient(135deg, #064232 0%, #064232 100%);
+                background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%);
                 border: none;
                 padding: 12px;
                 font-weight: bold;
@@ -67,7 +67,7 @@ function showLogin($error = '') {
                 font-size: 1.1em;
             }
             .btn-login:hover {
-                background: linear-gradient(135deg, #1b3d24 0%, #1b3d24 100%);
+                background: linear-gradient(135deg, #B4DEBD 0%, #B4DEBD 100%);
                 color: white;
             }
             .credentials-info {

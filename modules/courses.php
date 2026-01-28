@@ -4,7 +4,7 @@
  */
 
 function showCourses($pdo, $message = '', $message_type = '') {
-    $courses = $pdo->query("SELECT * FROM courses ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+    $courses = $pdo->query("SELECT * FROM courses ORDER BY created_at ASC")->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -28,7 +28,7 @@ function showCourses($pdo, $message = '', $message_type = '') {
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">📚 Student Enrollment System</a>
+                <a class="navbar-brand" href="/">🏫 Student Enrollment System</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
@@ -37,7 +37,7 @@ function showCourses($pdo, $message = '', $message_type = '') {
                         <li class="nav-item">
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="logout">
-                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
+                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Log out (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
                             </form>
                         </li>
                     </ul>
@@ -47,8 +47,8 @@ function showCourses($pdo, $message = '', $message_type = '') {
 
         <div class="container">
             <div class="page-header">
-                <h1>Courses</h1>
-                <a href="/courses/create" class="btn btn-success btn-lg">➕ Add New Course</a>
+                <h1>Subjects</h1>
+                <a href="/courses/create" class="btn btn-success btn-lg">➕ Add New Subject</a>
             </div>
 
             <?php if ($message): ?>
@@ -60,14 +60,14 @@ function showCourses($pdo, $message = '', $message_type = '') {
 
             <?php if (empty($courses)): ?>
                 <div class="text-center">
-                    <p><a href="/courses/create">Create the first course</a></p>
+                    <p><a href="/courses/create">Create the first subject</a></p>
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Course Name</th>
+                                <th>Subject Name</th>
                                 <th>Description</th>
                                 <th>Created</th>
                                 <th>Actions</th>
@@ -109,7 +109,7 @@ function showCreateCourse($message = '', $message_type = '') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Course</title>
+        <title>Create Subject</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
@@ -135,7 +135,7 @@ function showCreateCourse($message = '', $message_type = '') {
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="form-card">
-                        <h2>Create New Course</h2>
+                        <h2>Create New Subject</h2>
                         <?php if ($message): ?>
                             <div class="alert alert-<?php echo $message_type; ?> alert-dismissible fade show" role="alert">
                                 <?php echo $message; ?>
@@ -145,7 +145,7 @@ function showCreateCourse($message = '', $message_type = '') {
                         <form method="POST">
                             <input type="hidden" name="action" value="create_course">
                             <div class="mb-3">
-                                <label class="form-label">Course Name *</label>
+                                <label class="form-label">Subject Name *</label>
                                 <input type="text" class="form-control" name="course_name" required>
                             </div>
                             <div class="mb-3">
@@ -153,7 +153,7 @@ function showCreateCourse($message = '', $message_type = '') {
                                 <textarea class="form-control" name="description" rows="5"></textarea>
                             </div>
                             <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">✅ Create Course</button>
+                                <button type="submit" class="btn btn-primary btn-lg">✅ Create Subject</button>
                                 <a href="/courses" class="btn btn-secondary btn-lg">❌ Cancel</a>
                             </div>
                         </form>
@@ -186,7 +186,7 @@ function showCourseDetail($pdo, $id) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo htmlspecialchars($result['course_name']); ?> - Course Details</title>
+        <title><?php echo htmlspecialchars($result['course_name']); ?> - Subject Details</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
@@ -205,14 +205,14 @@ function showCourseDetail($pdo, $id) {
                 <a class="navbar-brand" href="/">📚 Student Enrollment System</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Courses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Subjects</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         <div class="container">
-            <a href="/courses" class="btn btn-secondary mb-3">← Back to Courses</a>
+            <a href="/courses" class="btn btn-secondary mb-3">← Back to Subjects</a>
             
             <div class="detail-card">
                 <h2><?php echo htmlspecialchars($result['course_name']); ?></h2>
@@ -228,7 +228,7 @@ function showCourseDetail($pdo, $id) {
 
             <h3>Enrolled Students</h3>
             <?php if (empty($enrolled_students)): ?>
-                <div class="alert alert-info">No students enrolled in this course yet.</div>
+                <div class="alert alert-info">No students enrolled in this subject yet.</div>
             <?php else: ?>
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -273,7 +273,7 @@ function showEditCourse($pdo, $id, $message = '', $message_type = '') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Course</title>
+        <title>Edit Subject</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
@@ -299,7 +299,7 @@ function showEditCourse($pdo, $id, $message = '', $message_type = '') {
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="form-card">
-                        <h2>Edit Course</h2>
+                        <h2>Edit Subject</h2>
                         <?php if ($message): ?>
                             <div class="alert alert-<?php echo $message_type; ?> alert-dismissible fade show" role="alert">
                                 <?php echo $message; ?>
@@ -310,7 +310,7 @@ function showEditCourse($pdo, $id, $message = '', $message_type = '') {
                             <input type="hidden" name="action" value="update_course">
                             <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
                             <div class="mb-3">
-                                <label class="form-label">Course Name *</label>
+                                <label class="form-label">Subject Name *</label>
                                 <input type="text" class="form-control" name="course_name" value="<?php echo htmlspecialchars($result['course_name']); ?>" required>
                             </div>
                             <div class="mb-3">
@@ -318,7 +318,7 @@ function showEditCourse($pdo, $id, $message = '', $message_type = '') {
                                 <textarea class="form-control" name="description" rows="5"><?php echo htmlspecialchars($result['description'] ?? ''); ?></textarea>
                             </div>
                             <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">✅ Update Course</button>
+                                <button type="submit" class="btn btn-primary btn-lg">✅ Update Subject</button>
                                 <a href="/courses/<?php echo $result['id']; ?>" class="btn btn-secondary btn-lg">❌ Cancel</a>
                             </div>
                         </form>

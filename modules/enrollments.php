@@ -4,7 +4,7 @@
  */
 
 function showEnrollments($pdo, $message = '', $message_type = '') {
-    $enrollments = $pdo->query("SELECT e.*, s.name as student_name, s.student_no, c.course_name FROM enrollments e JOIN students s ON e.student_id = s.id JOIN courses c ON e.course_id = c.id ORDER BY e.enrollment_date DESC")->fetchAll(PDO::FETCH_ASSOC);
+    $enrollments = $pdo->query("SELECT e.*, s.name as student_name, s.student_no, c.course_name FROM enrollments e JOIN students s ON e.student_id = s.id JOIN courses c ON e.course_id = c.id ORDER BY e.enrollment_date ASC")->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -28,16 +28,16 @@ function showEnrollments($pdo, $message = '', $message_type = '') {
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">📚 Student Enrollment System</a>
+                <a class="navbar-brand" href="/">🏫 Student Enrollment System</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Courses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Subjects</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li> -->
                         <li class="nav-item">
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="logout">
-                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
+                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Log out (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
                             </form>
                         </li>
                     </ul>

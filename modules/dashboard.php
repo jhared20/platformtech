@@ -36,19 +36,19 @@ function showDashboard() {
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">📚 Student Enrollment System</a>
+                <a class="navbar-brand" href="/">🏫 Student Enrollment System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Courses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Subjects</a></li>
                         <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li>
                         <li class="nav-item">
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="logout">
-                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
+                                <button type="submit" class="btn btn-sm btn-light ms-2">🚪 Log out (<?php echo htmlspecialchars($_SESSION['username']); ?>)</button>
                             </form>
                         </li>
                     </ul>
@@ -60,7 +60,7 @@ function showDashboard() {
         <div class="hero">
             <div>
                 <h1>Welcome to Student Enrollment System</h1>
-                <p>Manage students, courses, and enrollments with ease</p>
+                <p>Manage students, subjects, and enrollments with ease</p>
                 
                 <div class="cards-grid">
                     <div class="card">
@@ -75,9 +75,9 @@ function showDashboard() {
                     <div class="card">
                         <div class="card-body">
                             <div class="icon">📖</div>
-                            <h5>Courses</h5>
-                            <p>Create and manage course information</p>
-                            <a href="/courses" class="btn btn-primary">View Courses</a>
+                            <h5>Subjects</h5>
+                            <p>Create and manage subject information</p>
+                            <a href="/courses" class="btn btn-primary">View Subjects</a>
                         </div>
                     </div>
                     
@@ -85,7 +85,7 @@ function showDashboard() {
                         <div class="card-body">
                             <div class="icon">✅</div>
                             <h5>Enrollments</h5>
-                            <p>Manage student course enrollments</p>
+                            <p>Manage student subject enrollments</p>
                             <a href="/enrollments" class="btn btn-primary">View Enrollments</a>
                         </div>
                     </div>

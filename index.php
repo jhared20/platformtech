@@ -12,7 +12,7 @@ require_once 'modules/students.php';
 require_once 'modules/courses.php';
 require_once 'modules/enrollments.php';
 
-$DEFAULT_USERNAME = 'Jhared';
+$DEFAULT_USERNAME = 'Admin';
 $DEFAULT_PASSWORD = 'qwerty098';
 
 $request_uri = $_SERVER['REQUEST_URI'];
@@ -28,8 +28,13 @@ $message_type = '';
 if ($method === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'create_student') {
         try {
+            // Generate auto-increment student number
+            $lastStudent = $pdo->query("SELECT student_no FROM students ORDER BY id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+            $lastNumber = $lastStudent ? intval(substr($lastStudent['student_no'], 3)) : 0;
+            $newStudentNo = 'STU' . str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+            
             $stmt = $pdo->prepare("INSERT INTO students (student_no, name, email) VALUES (?, ?, ?)");
-            $stmt->execute([$_POST['student_no'], $_POST['name'], $_POST['email']]);
+            $stmt->execute([$newStudentNo, $_POST['name'], $_POST['email']]);
             header('Location: /students?success=Student created successfully');
             exit;
         } catch (PDOException $e) {
@@ -149,7 +154,7 @@ if ($path === '/login') {
 
 switch ($path) {
     case '/':
-        showDashboard();
+        showDashboard($pdo);
         break;
     case '/students':
         showStudents($pdo, $message, $message_type);

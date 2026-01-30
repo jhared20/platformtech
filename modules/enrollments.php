@@ -33,7 +33,7 @@ function showEnrollments($pdo, $message = '', $message_type = '') {
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
                         <li class="nav-item"><a class="nav-link" href="/courses">📖 Subjects</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li>
                         <li class="nav-item">
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="logout">

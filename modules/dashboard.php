@@ -3,7 +3,31 @@
  * Dashboard Module
  */
 
-function showDashboard() {
+function getDashboardStats($pdo) {
+    $stats = [];
+    
+    try {
+        // Get total students
+        $stmt = $pdo->query("SELECT COUNT(*) as count FROM students");
+        $stats['students'] = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+        
+        // Get total courses
+        $stmt = $pdo->query("SELECT COUNT(*) as count FROM courses");
+        $stats['courses'] = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+        
+        // Get total enrollments
+        $stmt = $pdo->query("SELECT COUNT(*) as count FROM enrollments");
+        $stats['enrollments'] = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+        
+        return $stats;
+    } catch (PDOException $e) {
+        return ['students' => 0, 'courses' => 0, 'enrollments' => 0];
+    }
+}
+
+function showDashboard($pdo = null) {
+    global $pdo;
+    $stats = $pdo ? getDashboardStats($pdo) : ['students' => 0, 'courses' => 0, 'enrollments' => 0];
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -26,10 +50,13 @@ function showDashboard() {
             .card-body { padding: 30px; text-align: center; }
             .card h5 { font-size: 1.5em; margin-bottom: 15px; color: #1C352D; }
             .card p { color: #ffffff; margin-bottom: 20px; }
+            .card-stat { font-size: 2.5em; font-weight: bold; color: #ffffff; margin-bottom: 10px; }
             .btn-primary { background: linear-gradient(135deg, #1C352D 0%, #1C352D 100%); border: none; padding: 10px 30px; font-weight: bold; }
             .btn-primary:hover { background: linear-gradient(135deg, #B4DEBD 0%, #B4DEBD 100%); transform: scale(1.05); }
             .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
             .icon { font-size: 3em; margin-bottom: 15px; }
+            .stats-section { margin-top: 50px; }
+            .stats-title { font-size: 2em; margin-bottom: 30px; color: white; font-weight: bold; }
         </style>
     </head>
     <body>
@@ -67,7 +94,8 @@ function showDashboard() {
                         <div class="card-body">
                             <div class="icon">👨‍🎓</div>
                             <h5>Students</h5>
-                            <p>Manage student information and track their enrollments</p>
+                            <div class="card-stat"><?php echo $stats['students']; ?></div>
+                            <p>Total students in the system</p>
                             <a href="/students" class="btn btn-primary">View Students</a>
                         </div>
                     </div>
@@ -76,7 +104,8 @@ function showDashboard() {
                         <div class="card-body">
                             <div class="icon">📖</div>
                             <h5>Subjects</h5>
-                            <p>Create and manage subject information</p>
+                            <div class="card-stat"><?php echo $stats['courses']; ?></div>
+                            <p>Total subjects available</p>
                             <a href="/courses" class="btn btn-primary">View Subjects</a>
                         </div>
                     </div>
@@ -85,7 +114,8 @@ function showDashboard() {
                         <div class="card-body">
                             <div class="icon">✅</div>
                             <h5>Enrollments</h5>
-                            <p>Manage student subject enrollments</p>
+                            <div class="card-stat"><?php echo $stats['enrollments']; ?></div>
+                            <p>Total active enrollments</p>
                             <a href="/enrollments" class="btn btn-primary">View Enrollments</a>
                         </div>
                     </div>

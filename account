@@ -1,2 +1,6 @@
 username: Jhared 
 Password: qwerty098
+
+run
+
+$env:PATH = "C:\xampp\php;" + $env:PATH; cd C:\xampp\htdocs\platform; php -S localhost:8000

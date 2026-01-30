@@ -11,7 +11,7 @@ function showCourses($pdo, $message = '', $message_type = '') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Courses</title>
+        <title>Subjects</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body { background: #f8f9fa; }
@@ -32,7 +32,7 @@ function showCourses($pdo, $message = '', $message_type = '') {
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" href="/courses">📖 Courses</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="/courses">📖 Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li>
                         <li class="nav-item">
                             <form method="POST" style="display: inline;">

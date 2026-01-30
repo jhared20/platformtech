@@ -34,7 +34,7 @@ function showStudents($pdo, $message = '', $message_type = '') {
                 <a class="navbar-brand" href="/">🏫 Student Enrollment System</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
-                        <!-- <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="/students">👨‍🎓 Students</a></li>
                         <li class="nav-item"><a class="nav-link" href="/courses">📖 Subjects</a></li>
                         <li class="nav-item"><a class="nav-link" href="/enrollments">✅ Enrollments</a></li>
                         <li class="nav-item">
@@ -151,8 +151,9 @@ function showCreateStudent($message = '', $message_type = '') {
                         <form method="POST">
                             <input type="hidden" name="action" value="create_student">
                             <div class="mb-3">
-                                <label class="form-label">Student Number *</label>
-                                <input type="text" class="form-control" name="student_no" required>
+                                <label class="form-label">Student Number</label>
+                                <input type="text" class="form-control" placeholder="Auto-generated" readonly>
+                                <small class="text-muted">Auto-generated upon submission</small>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Name *</label>
@@ -317,9 +318,11 @@ function showEditStudent($pdo, $id, $message = '', $message_type = '') {
                         <form method="POST">
                             <input type="hidden" name="action" value="update_student">
                             <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
+                            <input type="hidden" name="student_no" value="<?php echo htmlspecialchars($result['student_no']); ?>">
                             <div class="mb-3">
-                                <label class="form-label">Student Number *</label>
-                                <input type="text" class="form-control" name="student_no" value="<?php echo htmlspecialchars($result['student_no']); ?>" required>
+                                <label class="form-label">Student Number</label>
+                                <input type="text" class="form-control" value="<?php echo htmlspecialchars($result['student_no']); ?>" readonly>
+                                <small class="text-muted">Auto-generated - Cannot be changed</small>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Name *</label>
